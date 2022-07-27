@@ -56,6 +56,9 @@
 }
 
 .btn-contact {
-    background-color: #e82764;
-    margin-bottom: 10px;
+    background-color: #11a3cf;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
 }

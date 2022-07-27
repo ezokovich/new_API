@@ -24,7 +24,16 @@ app.get("/api/get" , (req ,res ) => {
         res.send(result);
     });
 });
-
+app.post("/api/post" ,(req, res) => {
+    const {wins , losses, points_scored , nom , surnom} = req.body;
+    const sqlInsert = "INSERT INTO foot (wins , losses, points_scored , nom , surnom) VALUES(?,?,?,?,?)";
+    db.query(sqlInsert,[wins , losses, points_scored , nom , surnom],(error,result) => {
+        if (error){
+            console.log(error);
+        }
+    } );
+})
+ 
 app.get ("/", (req, res, ) => {
     // const sqlInsert = "INSERT INTO foot (wins , losses, points_scored , nom , surnom) VALUES('123','543','7654','DEZR','hgfdsfrte')";
     // db.query(sqlInsert, (error,result) => {

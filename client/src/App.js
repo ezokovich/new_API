@@ -3,6 +3,7 @@ import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./components/Home"
+import AddEdit from "./components/AddEdit"
 function App() {
   return (
     <BrowserRouter>
@@ -12,6 +13,7 @@ function App() {
 
       <Routes>
       <Route path='/' element={<Home/>} />
+      <Route path='/addfoot' element={<AddEdit/>} />
       </Routes>
   
     </div>
