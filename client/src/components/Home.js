@@ -34,9 +34,6 @@ const Home = () => {
                 <thead>
                     <tr>
                         <th style={{ textAlign: "center" }} > No.</th>
-                        <th style={{ textAlign: "center" }} > Wins</th>
-                        <th style={{ textAlign: "center" }} > losses</th>
-                        <th style={{ textAlign: "center" }} > Point-scored</th>
                         <th style={{ textAlign: "center" }} > Nom</th>
                         <th style={{ textAlign: "center" }} > Surnom</th>
                         <th style={{ textAlign: "center" }} > Action</th>
@@ -47,9 +44,6 @@ const Home = () => {
                         return (
                             <tr key={item.id}>
                                 <th scope="row" >{index + 1}</th>
-                                <td>{item.wins}</td>
-                                <td>{item.losses}</td>
-                                <td>{item.points_scored}</td>
                                 <td>{item.nom}</td>
                                 <td>{item.surnom}</td>
 

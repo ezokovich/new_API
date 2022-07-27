@@ -36,8 +36,8 @@ const View = () => {
                      <br />
                      <br /> 
 
-                     <strong>Point_Scored:</strong>
-                     <span> {point_scored}</span>
+                     <strong>Points_Scored:</strong>
+                     <span> {user.points_scored}</span>
                      <br />
                      <br /> 
 
@@ -51,7 +51,7 @@ const View = () => {
                      <br />
                      <br />  
 
-                     <Link>
+                     <Link to = "/">
 
                       <div className="btn btn-edit"> Go Back</div>
 
