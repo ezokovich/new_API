@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./components/Home"
 import AddEdit from "./components/AddEdit"
+import View from "./components/View";
 function App() {
   return (
     <BrowserRouter>
@@ -14,6 +15,8 @@ function App() {
       <Routes>
       <Route path='/' element={<Home/>} />
       <Route path='/addfoot' element={<AddEdit/>} />
+      <Route path='/update/:id' element={<AddEdit/>} />
+      <Route path='/view/:id' element={<View/>} />
       </Routes>
   
     </div>

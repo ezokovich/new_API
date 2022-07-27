@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams, Link } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";                                                                          
 import axios from "axios"
 import "./AddEdit.css"
 import { toast } from 'react-toastify';
@@ -14,24 +14,50 @@ const initialState = {
 
 const AddEdits = () => {
     const [state, setState] = useState(initialState);
+
     const { wins, losses, points_scored, nom, surnom } = state;
+
     const navigate = useNavigate();
 
+    const {id}  = useParams();
+
+    useEffect(() =>{
+        axios.get( `http://localhost:5000/api/get/${id}` )
+        .then((resp) => setState({...resp.data[0]}))
+    },[id])
+
+
+ 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!wins || !losses || !points_scored || !nom || !surnom) {
             toast.error("please inter the value into each input field")
         } else {
-            axios.post("http://localhost:5000/api/post", {
-                wins,
-                losses,
-                points_scored,
-                nom,
-                surnom
-            }).then(() => {
-                setState({wins:"",losses:"",points_scored:"",nom:"",surnom:"",})
-            } ).catch((err) => toast.error(err.response.data));
-            toast.success("send succefully")
+            if (!id){
+
+                axios.post("http://localhost:5000/api/post", {
+                    wins,
+                    losses,
+                    points_scored,
+                    nom,
+                    surnom
+                }).then(() => {
+                    setState({wins:"",losses:"",points_scored:"",nom:"",surnom:"",})
+                } ).catch((err) => toast.error(err.response.data));
+                toast.success("send succefully")
+            }else {
+                axios.put(`http://localhost:5000/api/update/${id}`, {
+                    wins,
+                    losses,
+                    points_scored,
+                    nom,
+                    surnom
+                }).then(() => {
+                    setState({wins:"",losses:"",points_scored:"",nom:"",surnom:"",})
+                } ).catch((err) => toast.error(err.response.data));
+                toast.success("Update successfully")
+            }
+       
             setTimeout(() =>  navigate(`/`),500)
         }
     }
@@ -55,7 +81,7 @@ const AddEdits = () => {
                     id="wins"
                     name="wins"
                     placeholder=" the wins ...."
-                    value={wins}
+                    value={wins || ""}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="">Losses</label>
@@ -63,7 +89,7 @@ const AddEdits = () => {
                     id=""
                     name="losses"
                     placeholder=" the losses ...."
-                    value={losses}
+                    value={losses || ""}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="">points_scored</label>
@@ -71,7 +97,7 @@ const AddEdits = () => {
                     id="points_scored"
                     name="points_scored"
                     placeholder=" the points_scored...."
-                    value={points_scored}
+                    value={points_scored || ""}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="">Nom</label>
@@ -79,7 +105,7 @@ const AddEdits = () => {
                     id="nom"
                     name="nom"
                     placeholder=" the Nom ...."
-                    value={nom}
+                    value={nom || ""}
                     onChange={handleInputChange}
                 />
                 <label htmlFor="">Surnom</label>
@@ -87,11 +113,11 @@ const AddEdits = () => {
                     id="surnom"
                     name="surnom"
                     placeholder=" the Surnom ...."
-                    value={surnom}
+                    value={surnom || ""}
                     onChange={handleInputChange}
                 />
 
-                <input type="submit" value="Save" />
+                <input type="submit" value={id ? "Update" : "Save"} />
                 <Link to="/">
                     <input type="button" value="Go Back" />
                 </Link>

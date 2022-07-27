@@ -18,12 +18,16 @@ app.use(cors());
 app.use(express.json());
 app.use( bodyParser.urlencoded({extended: true}));
 
+
 app.get("/api/get" , (req ,res ) => {
     const sqlGet = "SELECT * FROM foot ";
     db.query(sqlGet, (error , result) => {
         res.send(result);
     });
 });
+
+
+
 app.post("/api/post" ,(req, res) => {
     const {wins , losses, points_scored , nom , surnom} = req.body;
     const sqlInsert = "INSERT INTO foot (wins , losses, points_scored , nom , surnom) VALUES(?,?,?,?,?)";
@@ -43,6 +47,31 @@ app.delete("/api/del/:id" ,(req, res) => {
         }
     } );
 })
+
+
+app.get("/api/get/:id" , (req ,res ) => {
+    const {id} = req.params;
+    const sqlGet = "SELECT * FROM foot where id = ?";
+    db.query(sqlGet,id, (error , result) => {
+        if( error){
+            console.log(error)
+        }
+        res.send(result);
+    });
+});
+
+app.put("/api/update/:id" , (req ,res ) => {
+    const {id} = req.params;
+    const {wins , losses, points_scored , nom , surnom} = req.body;
+    const sqlUpdate = "UPDATE foot SET wins = ?, losses = ? , points_scored = ?, nom = ?, surnom = ? WHERE id = ?";
+    db.query(sqlUpdate,[wins , losses, points_scored , nom , surnom,id], (error , result) => {
+        if( error){
+            console.log(error);
+        }
+        res.send(result);
+    });
+});
+
 
 app.get ("/", (req, res, ) => {
     // const sqlInsert = "INSERT INTO foot (wins , losses, points_scored , nom , surnom) VALUES('123','543','7654','DEZR','hgfdsfrte')";
