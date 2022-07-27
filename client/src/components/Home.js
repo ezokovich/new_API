@@ -15,6 +15,14 @@ const Home = () => {
     useEffect(() => {
         loadData();
     }, [])
+    
+    const deletefootballer = (id) =>{
+        if(window.confirm("Are you sure to delete the stats ? remenber that it is for the government")){
+            axios.delete(  `http://localhost:5000/api/del/${id}`);
+            toast.success("you have delete the information of the togo footballer with success");
+            setTimeout(() => loadData(),500)
+        }
+    }
     return (
 
         <div style={{ marginTop: "150px" }}>
@@ -49,7 +57,7 @@ const Home = () => {
                                     <Link to={`/update/${item.id}`}>
                                         <button className="btn btn-edit">Edit</button>
                                     </Link>
-                                    <button className="btn btn-delete">Delete</button>
+                                    <button className="btn btn-delete" onClick={() => deletefootballer(item.id)} >Delete</button>
                                     <Link to={`/view/${item.id}`}>
                                         <button className="btn btn-view">View</button>
                                     </Link>

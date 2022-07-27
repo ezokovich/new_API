@@ -15,7 +15,7 @@ const initialState = {
 const AddEdits = () => {
     const [state, setState] = useState(initialState);
     const { wins, losses, points_scored, nom, surnom } = state;
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,13 +31,14 @@ const AddEdits = () => {
             }).then(() => {
                 setState({wins:"",losses:"",points_scored:"",nom:"",surnom:"",})
             } ).catch((err) => toast.error(err.response.data));
-            setTimeout(() =>  history.push("/"),500)
+            toast.success("send succefully")
+            setTimeout(() =>  navigate(`/`),500)
         }
     }
 
     const handleInputChange = (e) => {
-        const { nom, value } = e.target;
-        setState({ ...state, [nom]: value });
+        const { name, value } = e.target;
+        setState({ ...state, [name]: value });
     };
     return (
         <div style={{ marginTop: "100px" }}>

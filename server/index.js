@@ -34,6 +34,16 @@ app.post("/api/post" ,(req, res) => {
     } );
 })
  
+app.delete("/api/remove/:id" ,(req, res) => {
+    const {id} = req.params;
+    const sqlRemote ="DELETE FROM foot WHERE id = ?";
+    db.query(sqlRemote,id,(error,result) => {
+        if (error){
+            console.log(error);
+        }
+    } );
+})
+
 app.get ("/", (req, res, ) => {
     // const sqlInsert = "INSERT INTO foot (wins , losses, points_scored , nom , surnom) VALUES('123','543','7654','DEZR','hgfdsfrte')";
     // db.query(sqlInsert, (error,result) => {
