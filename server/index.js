@@ -34,10 +34,10 @@ app.post("/api/post" ,(req, res) => {
     } );
 })
  
-app.delete("/api/remove/:id" ,(req, res) => {
+app.delete("/api/del/:id" ,(req, res) => {
     const {id} = req.params;
-    const sqlRemote ="DELETE FROM foot WHERE id = ?";
-    db.query(sqlRemote,id,(error,result) => {
+    const sqlDelete ="DELETE FROM foot WHERE id = ?";
+    db.query(sqlDelete,id,(error,result) => {
         if (error){
             console.log(error);
         }
