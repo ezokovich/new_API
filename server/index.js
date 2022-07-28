@@ -6,11 +6,10 @@ const cors = require("cors");
 
 
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",  
-    password: "",
-    database: "crud_API",
-    port: "3307",
+    host: "192.168.0.100",
+    user: "ezokftfp_ftf",  
+    password: "Azerty1234",
+    database: "ezokftfp_ftf",
 });
 
 
@@ -85,5 +84,5 @@ app.get ("/", (req, res, ) => {
 
 
 app.listen(5000, () => {
-    console.log("server is runinng on port 5000 ");
+    console.log("server is runinng on port 5000");
 })
