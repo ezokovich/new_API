@@ -6,10 +6,14 @@ const cors = require("cors");
 
 
 const db = mysql.createPool({
-    host: "192.168.0.100",
-    user: "ezokftfp_ftf",  
-    password: "Azerty1234",
-    database: "ezokftfp_ftf",
+    // host: "192.168.0.100",
+    // user: "ezokftfp_ftf",  
+    // password: "Azerty1234",
+    // database: "ezokftfp_ftf",
+    host:"mysql-ezok.alwaysdata.net",
+    user: "ezok",
+    password:"Azerty@@1234",
+    database:"ezok_ftf",
 });
 
 
