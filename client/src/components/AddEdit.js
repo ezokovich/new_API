@@ -22,7 +22,7 @@ const AddEdits = () => {
     const {id}  = useParams();
 
     useEffect(() =>{
-        axios.get( `http://localhost:5000/api/get/${id}` )
+        axios.get( `https://fathomless-ocean-40790.herokuapp.com/api/get/${id}` )
         .then((resp) => setState({...resp.data[0]}))
     },[id])
 
@@ -35,7 +35,7 @@ const AddEdits = () => {
         } else {
             if (!id){
 
-                axios.post("http://localhost:5000/api/post", {
+                axios.post("https://fathomless-ocean-40790.herokuapp.com/api/post", {
                     wins,
                     losses,
                     points_scored,
@@ -46,7 +46,7 @@ const AddEdits = () => {
                 } ).catch((err) => toast.error(err.response.data));
                 toast.success("send succefully")
             }else {
-                axios.put(`http://localhost:5000/api/update/${id}`, {
+                axios.put(`https://fathomless-ocean-40790.herokuapp.com/api/update/${id}`, {
                     wins,
                     losses,
                     points_scored,

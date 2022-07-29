@@ -8,7 +8,7 @@ const Home = () => {
     const [data, setData] = useState([]);
 
     const loadData = async () => {
-        const response = await axios.get("http://localhost:5000/api/get");
+        const response = await axios.get("https://fathomless-ocean-40790.herokuapp.com/api/get");
         setData(response.data);
     };
 
@@ -18,7 +18,7 @@ const Home = () => {
     
     const deletefootballer = (id) =>{
         if(window.confirm("Are you sure to delete the stats ? remenber that it is for the government")){
-            axios.delete(  `http://localhost:5000/api/del/${id}`);
+            axios.delete(  `https://fathomless-ocean-40790.herokuapp.com/api/del/${id}`);
             toast.success("you have delete the information of the togo footballer with success");
             setTimeout(() => loadData(),500)
         }
