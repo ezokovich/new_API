@@ -3,9 +3,12 @@ import {  Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./Home.css";
+import ftf1 from "../img/ftf1.png"
 
 const Home = () => {
     const [data, setData] = useState([]);
+
+    const [isOpen, setIsOpen] = useState(false);
 
     const loadData = async () => {
         const response = await axios.get("https://fathomless-ocean-40790.herokuapp.com/api/get");
@@ -22,8 +25,27 @@ const Home = () => {
             toast.success("you have delete the information of the togo footballer with success");
             setTimeout(() => loadData(),500)
         }
-    }
+    };
     return (
+
+         <div>
+          
+          <div className="Navbar">
+      <div ><img style={{width:"90px",height:"70px" , borderRadius:'70%',marginTop:"10px" }} src={ftf1} alt="logo"/></div>
+      <div className={`nav-items ${isOpen && "open"}`}>
+        <a href="/">Home</a>
+        <a href="/addfoot"> Add footbaler</a>
+ 
+     
+       
+      </div>
+      <div
+        className={`nav-toggle ${isOpen && "open"}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="bar"></div>
+      </div>
+    </div>
 
         <div style={{ marginTop: "150px" }}>
             <Link to="/addfoot"> 
@@ -63,6 +85,7 @@ const Home = () => {
                     })}
                 </tbody>
             </table>
+        </div>
         </div>
 
     )

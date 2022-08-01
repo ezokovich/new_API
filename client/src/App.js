@@ -2,8 +2,8 @@ import {BrowserRouter , Route, Routes } from "react-router-dom";
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Home from "./components/Home"
-import AddEdit from "./components/AddEdit"
+import Home from "./components/Home";
+import AddEdit from "./components/AddEdit";
 import View from "./components/View";
 function App() {
   return (
