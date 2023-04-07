@@ -11,7 +11,7 @@ const Home = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     const loadData = async () => {
-        const response = await axios.get("https://fathomless-ocean-40790.herokuapp.com/api/get");
+        const response = await axios.get("https://server-ezokovich.vercel.app/api/get");
         setData(response.data);
     };
 
@@ -21,7 +21,7 @@ const Home = () => {
     
     const deletefootballer = (id) =>{
         if(window.confirm("Are you sure to delete the stats ? remenber that it is for the government")){
-            axios.delete(  `https://fathomless-ocean-40790.herokuapp.com/api/del/${id}`);
+            axios.delete(  `https://server-ezokovich.vercel.app/api/del/${id}`);
             toast.success("you have delete the information of the togo footballer with success");
             setTimeout(() => loadData(),500)
         }

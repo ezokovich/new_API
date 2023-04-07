@@ -10,7 +10,7 @@ const View = () => {
 
     
     useEffect(() =>{
-        axios.get( `https://fathomless-ocean-40790.herokuapp.com/api/get/${id}` )
+        axios.get( `https://server-ezokovich.vercel.app/.com/api/get/${id}` )
         .then((resp) => setUser({...resp.data[0]}))
     },[id])
 
